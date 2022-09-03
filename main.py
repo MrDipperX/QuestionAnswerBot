@@ -8,8 +8,8 @@ bot = TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.from_user.id, f'Assalomu alaykum, qadrli {message.from_user.first_name}. '
-                                           f'Sizni qiziqtirayotgan savolingizni yozib qoldiring')
+    bot.send_message(message.from_user.id, f'Hello, dear {message.from_user.first_name}. '
+                                           f'Write me the question in which you are interested.')
 
 
 @bot.message_handler(content_types=['text'])
@@ -27,7 +27,7 @@ def mess(message):
             inline_markup = types.InlineKeyboardMarkup()
             inline_markup.add(types.InlineKeyboardButton('OK', callback_data='OK'))
             bot.send_message(CHAT_ID, f'User: `{message.from_user.id}` , @{message.from_user.username}, '
-                                      f'\nSavol: {get_message_bot}', parse_mode='MARKDOWN', reply_markup=inline_markup)
+                                      f'\nQuestion: {get_message_bot}', parse_mode='MARKDOWN', reply_markup=inline_markup)
     except Exception as e:
         print(e)
 
